@@ -1,3 +1,18 @@
 .page-now {
   font-weight: 700;
 }
+
+.icon:hover {
+  cursor: pointer;
+  color: blue;
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
+.click-style {
+  background-color: lightgray;
+  border: solid;
+  border-radius: 20%;
+  border-color: gray;
+}

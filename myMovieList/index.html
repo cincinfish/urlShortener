@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +9,7 @@
 </head>
 
 <body>
+  <script src="https://kit.fontawesome.com/9592afdd32.js" crossorigin="anonymous"></script>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -20,8 +20,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active navbar-brand" href="index.html">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">
               Home
               <span class="visually-hidden">(current)</span>
             </a>
@@ -35,22 +35,38 @@
   </nav>
 
   <div class="container mt-5">
-    <!-- Search Bar -->
-    <form class="row row-cols-lg-auto g-3 align-items-center mb-2" id="search-form">
-      <div class="col-12">
-        <label class="visually-hidden" for="search-input">
-          Search Keyword
-        </label>
-        <input type="text" class="form-control" id="search-input" placeholder="Keyword..." />
+    <div class="d-flex justify-content-between">
+      <!-- Search Bar -->
+      <form class="row row-cols-lg-auto g-3 align-items-center mb-2" id="search-form">
+        <div class="col-12">
+          <label class="visually-hidden" for="search-input">
+            Search Keyword
+          </label>
+          <input type="text" class="form-control" id="search-input" placeholder="Keyword..." />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="search-submit-button">
+            Search
+          </button>
+        </div>
+      </form>
+      <div class="d-flex justify-content-end align-items-center" id="list-icon">
+        <div>
+          <button type="button" class="btn btn-danger m-3" id="clear-all-favorites">Clear All
+            Favorites</button>
+        </div>
+        <!--切換鈕 -->
+        <i class="fa fa-th fa-2x p-1 icon click-style" aria-hidden="true" id="card-mode" data-mode="card-mode"></i>
+        <i class="fa fa-bars fa-2x p-1 icon" aria-hidden="true" id="list-mode" data-mode="list-mode"></i>
+        <i class="fa-solid fa-arrow-right-arrow-left fa-2x p-1 icon" aria-hidden="true" id="carousel-mode"
+          data-mode="carousel-mode"></i>
+        <i class="fa-solid fa-bars-staggered fa-2x p-1 icon" aria-hidden="true" id="accordion-mode"
+          data-mode="accordion-mode"></i>
       </div>
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary" id="search-submit-button">
-          Search
-        </button>
-      </div>
-    </form>
+    </div>
+
     <!-- Render Movie List -->
-    <div class="row" id="data-panel">
+    <div class="row mt-3" id="data-panel" data-mode="card-mode">
     </div>
   </div>
   <!-- paginator -->
