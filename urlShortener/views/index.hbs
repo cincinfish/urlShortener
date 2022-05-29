@@ -1,11 +1,13 @@
 <form method="POST" action="/">
   <input type="url" name="url" placeholder="Input URL here..." aria-label="Input URL here"
     aria-describedby="search-button">
-  {{#each errors}}
-  <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    {{this.msg}}
-  </div>
-  {{/each}}
+  {{#if errors}}
+    {{#each errors}}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      {{this.msg}}
+    </div>
+    {{/each}}
+  {{/if}}
   <button type="submit">Shortener</button>
 </form>
