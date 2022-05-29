@@ -33,6 +33,7 @@ input {
 }
 
 button {
+  margin: 10px;
   width: 200px;
   height: 40px;
   cursor: pointer;
@@ -46,4 +47,30 @@ button {
 button:hover {
   color: white;
   background-color: #4A82E1;
+}
+
+.alert {
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  width: 90%;
+  background-color: #f4cccc;
+  color: #842029;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: #842029;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
 }
