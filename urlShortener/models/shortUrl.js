@@ -8,7 +8,11 @@ const shortUrlSchema = new Schema({
   },
   short: {
     type: Boolean,
-    default: false
+    required: false
+  },
+  id: {
+    type: Number,
+    required: false
   }
 })
 

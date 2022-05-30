@@ -2,12 +2,30 @@
   <input type="url" name="url" placeholder="Input URL here..." aria-label="Input URL here"
     aria-describedby="search-button">
   {{#if errors}}
-    {{#each errors}}
-    <div class="alert">
-      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-      {{this.msg}}
-    </div>
-    {{/each}}
+  {{#each errors}}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{this.msg}}
+  </div>
+  {{/each}}
   {{/if}}
   <button type="submit">Shortener</button>
 </form>
+<table>
+  <thead>
+    <tr>
+      <th>Full URL</th>
+      <th>Short URL</th>
+      <th>Copy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a
+          href="https://stackoverflow.com/questions/6213227/fastest-way-to-convert-a-number-to-radix-64-in-javascript">https://stackoverflow.com/questions/6213227/fastest-way-to-convert-a-number-to-radix-64-in-javascript</a>
+      </td>
+      <td><a href="/123456">123456</a></td>
+      <td class="copy"><i class="fa-solid fa-copy"></i>Copy</td>
+    </tr>
+  </tbody>
+</table>

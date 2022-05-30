@@ -3,6 +3,7 @@ const router = express.Router()
 const shortener = require('../../public/javascript/shortener')
 const { check, validationResult } = require('express-validator')
 const shortUrl = require('../../models/shortUrl')
+const { append } = require('express/lib/response')
 
 router.get('/', (req, res) => {
   res.render('index')
@@ -39,5 +40,7 @@ router.post('/', [
         })
     })
 })
+
+
 
 module.exports = router
