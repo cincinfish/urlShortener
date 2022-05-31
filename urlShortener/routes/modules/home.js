@@ -39,5 +39,13 @@ router.post('/', [
     })
 })
 
+router.get('/:short', async (req, res) => {
+  const short = req.params.short
+  const shortenUrl = await shortUrl.findOne({ short }).lean()
+  if (shortenUrl === null) {
+    return res.sendStatus(404)
+  }
+  res.redirect(shortenUrl.full)
+})
 
 module.exports = router
