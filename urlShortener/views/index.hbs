@@ -1,4 +1,15 @@
 <form method="POST" action="/">
+  {{#if short.length}}
+  <div class="result">
+    <h3>Success! Please use this link:</h3>
+    <p id="generatedURL"><a href="/{{short}}">{{short}}</a> </p>
+  </div>
+  <button class="copy" onclick="copy()">Copy</button>
+
+  <a href="/">
+    <i class="fa-solid fa-arrow-left fa-2x p-1"></i>
+  </a>
+  {{else}}
   <input type="url" name="url" placeholder="Input URL here..." aria-label="Input URL here"
     aria-describedby="search-button">
   {{#if errors}}
@@ -10,6 +21,7 @@
   {{/each}}
   {{/if}}
   <button type="submit">Shortener</button>
+  {{/if}}
 </form>
 <table>
   <thead>
@@ -20,12 +32,14 @@
     </tr>
   </thead>
   <tbody>
+    {{#each url}}
     <tr>
-      <td><a
-          href="https://stackoverflow.com/questions/6213227/fastest-way-to-convert-a-number-to-radix-64-in-javascript">https://stackoverflow.com/questions/6213227/fastest-way-to-convert-a-number-to-radix-64-in-javascript</a>
+      <td><a href="{{this.full}}">{{this.full}}</a>
       </td>
-      <td><a href="/123456">123456</a></td>
+      <td><a href="/{{this.short}}">{{this.short}}</a></td>
       <td class="copy"><i class="fa-solid fa-copy"></i>Copy</td>
     </tr>
+    {{/each}}
+
   </tbody>
 </table>
