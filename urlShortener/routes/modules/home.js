@@ -21,17 +21,18 @@ router.post('/', [
     })
   }
 
-  await shortUrl.find({ full: fullUrl })
+  await shortUrl.findOne({ full: fullUrl })
     .lean()
     .then(url => {
-      if (url[0]) {
+      if (url) {
         return res.render('index', { url, short: url.short })
       }
       const shortUrlChars = shortener()
       shortUrl.create({
         full: fullUrl, short: shortUrlChars
       })
-      return res.render('index', { short: shortUrlChars })
+      url = { "full": fullUrl, "short": shortUrlChars }
+      return res.render('index', { url, short: shortUrlChars })
     })
     .catch(error => {
       console.log(error)

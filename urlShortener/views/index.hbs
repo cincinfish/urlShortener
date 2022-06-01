@@ -6,6 +6,14 @@
   </div>
   <button class="copy" onclick="copy()">Copy</button>
 
+  <script>
+    function copy() {
+      const URL = document.getElementById("generatedURL")
+      navigator.clipboard.writeText(URL.innerText)
+        .then(() => alert('copied'))
+        .catch(error => console.log(error))
+    }
+  </script>
   <a href="/">
     <i class="fa-solid fa-arrow-left fa-2x p-1"></i>
   </a>
@@ -23,6 +31,7 @@
   <button type="submit">Shortener</button>
   {{/if}}
 </form>
+{{#if short.length}}
 <table>
   <thead>
     <tr>
@@ -43,3 +52,4 @@
 
   </tbody>
 </table>
+{{/if}}
