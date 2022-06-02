@@ -1,32 +1,23 @@
 const shortUrl = require("../../models/shortUrl")
 
-function shortener() {
+async function shortener() {
   const chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ'.split('')
   let newUrl = ''
   for (let i = 0; i < 5; i++) {
     newUrl += chars[Math.floor(Math.random() * chars.length)]
-    if (checkUrl(newUrl) === true) {
-      i = 0
-      newUrl = ''
-    }
+    // await shortUrl.findOne({ short: newUrl })
+    //   .lean()
+    //   .then(url => {
+    //     if (url) {
+    //       i = 0
+    //       newUrl = ''
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
   }
   return newUrl
 }
-async function checkUrl(short) {
-  await shortUrl.findOne({ short })
-    .lean()
-    .then(url => {
-      console.log("shorturl", url)
-      if (url) {
-        console.log("short", url.short)
-        return true
-      }
-      return false
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
 
 module.exports = shortener
