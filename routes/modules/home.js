@@ -16,12 +16,10 @@ router.post('/', [
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(422).render('index', {
-      errors: errors.array(),
-      url: { fullUrl }
+      errors: errors.array()
     })
   }
   const urlHost = `${req.protocol}://${req.header('host')}/`
-
   await shortUrl.findOne({ full: fullUrl })
     .lean()
     .then(url => {
