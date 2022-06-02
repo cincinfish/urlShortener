@@ -20,19 +20,20 @@ router.post('/', [
       url: { fullUrl }
     })
   }
+  const urlHost = `${req.protocol}://${req.header('host')}/`
 
   await shortUrl.findOne({ full: fullUrl })
     .lean()
     .then(url => {
       if (url) {
-        return res.render('index', { url, short: url.short })
+        return res.render('index', { url, urlHost: urlHost, short: url.short })
       }
       const shortUrlChars = shortener()
       shortUrl.create({
         full: fullUrl, short: shortUrlChars
       })
       url = { "full": fullUrl, "short": shortUrlChars }
-      return res.render('index', { url, short: shortUrlChars })
+      return res.render('index', { url, urlHost })
     })
     .catch(error => {
       console.log(error)
@@ -43,10 +44,10 @@ router.post('/', [
 router.get('/:short', async (req, res) => {
   const short = req.params.short
   const shortenUrl = await shortUrl.findOne({ short }).lean()
-  if (shortenUrl === null) {
-    return res.sendStatus(404)
+  if (shortenUrl) {
+    return res.redirect(shortenUrl.full)
   }
-  res.redirect(shortenUrl.full)
+  res.sendStatus(404)
 })
 
 module.exports = router

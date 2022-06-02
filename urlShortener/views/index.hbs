@@ -1,22 +1,12 @@
 <form method="POST" action="/">
-  {{#if short.length}}
+  {{#if url}}
   <div class="result">
     <h3>Success! Please use this link:</h3>
-    <p id="generatedURL"><a href="/{{short}}">{{short}}</a> </p>
+    <div id="fullURL"><a href="/{{short}}">{{urlHost}}{{short}}</a></div>
   </div>
   <button class="copy" onclick="copy()">Copy</button>
 
-  <script>
-    function copy() {
-      const URL = document.getElementById("generatedURL")
-      navigator.clipboard.writeText(URL.innerText)
-        .then(() => alert('copied'))
-        .catch(error => console.log(error))
-    }
-  </script>
-  <a href="/">
-    <i class="fa-solid fa-arrow-left fa-2x p-1"></i>
-  </a>
+  <p><a href="/" class="newURL"><i class="fa-solid fa-arrow-right"></i> Create other shortened URL</a></p>
   {{else}}
   <input type="url" name="url" placeholder="Input URL here..." aria-label="Input URL here"
     aria-describedby="search-button">
@@ -31,6 +21,7 @@
   <button type="submit">Shortener</button>
   {{/if}}
 </form>
+<!--
 {{#if short.length}}
 <table>
   <thead>
@@ -52,4 +43,4 @@
 
   </tbody>
 </table>
-{{/if}}
+{{/if}}-->
