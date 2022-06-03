@@ -4,7 +4,7 @@ async function shortener() {
   const chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ'
   let newUrl = ''
   for (let i = 0; i < 5; i++) {
-    newUrl += chars[Math.floor(Math.random() * chars.length)]
+    newUrl += chars.charAt(Math.floor(Math.random() * chars.length))
     await shortUrl.findOne({ short: newUrl })
       .lean()
       .then(url => {
