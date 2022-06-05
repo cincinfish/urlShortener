@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 router.post('/', [
   check('url').isURL().withMessage('Please check your url'),
 ], async (req, res) => {
-
   const fullUrl = req.body.url ? req.body.url : ''
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -31,6 +30,7 @@ router.post('/', [
         full: fullUrl, short: shortUrlChars
       })
       url = { "full": fullUrl, "short": shortUrlChars }
+      console.log(url)
       return res.render('index', { url, urlHost })
     })
     .catch(error => {
