@@ -1,13 +1,12 @@
+{{#if url}}
+<div class="result">
+  <h3>Success! Please use this link:</h3>
+  <div id="fullURL"><a href="/{{url.short}}" target="_blank">{{urlHost}}{{url.short}}</a></div>
+</div>
+<button class="copy" onclick="copy()">Copy</button>
+<p><a href="/" class="newURL"><i class="fa-solid fa-arrow-right"></i> Create other shortened URL</a></p>
+{{else}}
 <form method="POST" action="/">
-  {{#if url}}
-  <div class="result">
-    <h3>Success! Please use this link:</h3>
-    <div id="fullURL"><a href="/{{short}}">{{urlHost}}{{short}}</a></div>
-  </div>
-  <button class="copy" onclick="copy()">Copy</button>
-
-  <p><a href="/" class="newURL"><i class="fa-solid fa-arrow-right"></i> Create other shortened URL</a></p>
-  {{else}}
   <input type="url" name="url" placeholder="Input URL here..." aria-label="Input URL here"
     aria-describedby="search-button">
   {{#if errors}}

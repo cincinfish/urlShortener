@@ -30,7 +30,6 @@ router.post('/', [
         full: fullUrl, short: shortUrlChars
       })
       url = { "full": fullUrl, "short": shortUrlChars }
-      console.log(url)
       return res.render('index', { url, urlHost })
     })
     .catch(error => {
